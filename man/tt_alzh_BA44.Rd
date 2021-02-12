@@ -8,12 +8,14 @@
 An object of class \code{data.frame} with 21745 rows and 7 columns.
 }
 \source{
-The table was determined based on data associated with the paper with PMID:17845826
+The table was determined based on data associated with the paper with 
+PMID:17845826
 }
 \usage{
 tt_alzh_BA44
 }
 \description{
-A list of genes found to be differentially expressed in the BA44 in Alzheimer's disease.
+A list of genes found to be differentially expressed in the BA44 in 
+Alzheimer's disease.
 }
 \keyword{datasets}

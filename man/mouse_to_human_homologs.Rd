@@ -10,18 +10,33 @@ An object of class \code{data.frame} with 15604 rows and 6 columns.
 \source{
 The code to prepare the .Rda file file from the marker file is:
 \code{
-markers = read.csv(url("http://www.informatics.jax.org/downloads/reports/MRK_List2.rpt"),sep="\t")
-genes = markers[markers$Feature.Type=="protein coding gene",]
+link <- "http://www.informatics.jax.org/downloads/reports/MRK_List2.rpt"
+markers <- read.csv(url(link),sep="\t")
+genes <- markers[markers$Feature.Type=="protein coding gene",]
 listMarts(host="www.ensembl.org")
-human <- useMart(host="www.ensembl.org", "ENSEMBL_MART_ENSEMBL", dataset="hsapiens_gene_ensembl")
-mouse <- useMart(host="www.ensembl.org", "ENSEMBL_MART_ENSEMBL", dataset="mmusculus_gene_ensembl")
-mouse_to_human_homologs = getLDS(attributes = c("mgi_symbol","entrezgene","ensembl_gene_id"),
-                                 filters = "mgi_symbol", values = genes$Marker.Symbol,
-                                 mart = mouse,
-                                 attributesL = c("hgnc_symbol","ensembl_gene_id","entrezgene"), martL = human)
-unique_mgi = setdiff(mouse_to_human_homologs$MGI.symbol,mouse_to_human_homologs$MGI.symbol[duplicated(mouse_to_human_homologs$MGI.symbol)])
-unique_hgnc = setdiff(mouse_to_human_homologs$HGNC.symbol,mouse_to_human_homologs$HGNC.symbol[duplicated(mouse_to_human_homologs$HGNC.symbol)])
-mouse_to_human_homologs = mouse_to_human_homologs[mouse_to_human_homologs$MGI.symbol %in% unique_mgi & mouse_to_human_homologs$HGNC.symbol %in% unique_hgnc,]
+human <- useMart(host="www.ensembl.org", "ENSEMBL_MART_ENSEMBL", 
+                   dataset="hsapiens_gene_ensembl")
+mouse <- useMart(host="www.ensembl.org", "ENSEMBL_MART_ENSEMBL", 
+                   dataset="mmusculus_gene_ensembl")
+mouse_to_human_homologs = getLDS(attributes = c("mgi_symbol","entrezgene",
+                                                    "ensembl_gene_id"),
+                                     filters = "mgi_symbol", 
+                                     values = genes$Marker.Symbol,
+                                     mart = mouse,
+                                     attributesL = c("hgnc_symbol",
+                                                         "ensembl_gene_id",
+                                                         "entrezgene"), 
+                                     martL = human)
+unique_mgi = setdiff(mouse_to_human_homologs$MGI.symbol,
+                         mouse_to_human_homologs$MGI.symbol[
+                             duplicated(mouse_to_human_homologs$MGI.symbol)])
+unique_hgnc = setdiff(mouse_to_human_homologs$HGNC.symbol,
+                         mouse_to_human_homologs$HGNC.symbol[
+                         duplicated(mouse_to_human_homologs$HGNC.symbol)])
+mouse_to_human_homologs = 
+    mouse_to_human_homologs[
+    mouse_to_human_homologs$MGI.symbol %in% unique_mgi & 
+        mouse_to_human_homologs$HGNC.symbol %in% unique_hgnc,]
 save(mouse_to_human_homologs,file="mouse_to_human_homologs.Rda")
 }
 }
@@ -29,8 +44,10 @@ save(mouse_to_human_homologs,file="mouse_to_human_homologs.Rda")
 mouse_to_human_homologs
 }
 \description{
-A dataset containing the MGI and HGNC symbols, Human and Mouse Entrez and Ensembl gene IDs for all human
-orthologs for mouse genes. Whenin the mouse genes are defined based on a list of all MGI markers from the
-MGI website (downloaded as MRK_List2.rpt file from http://www.informatics.jax.org/downloads/reports/MRK_List2.rpt)
+A dataset containing the MGI and HGNC symbols, Human and Mouse Entrez and 
+Ensembl gene IDs for all human orthologs for mouse genes. Whenin the mouse 
+genes are defined based on a list of all MGI markers from the MGI website 
+(downloaded as MRK_List2.rpt file from 
+http://www.informatics.jax.org/downloads/reports/MRK_List2.rpt)
 }
 \keyword{datasets}
