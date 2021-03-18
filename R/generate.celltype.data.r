@@ -27,8 +27,12 @@
 #' l2 <- cortex_mrna$annot$level2class
 #' annotLevels <- list(l1 = l1, l2 = l2)
 #' fNames_ALLCELLS <- 
+<<<<<<< HEAD
 #'     generate.celltype.data(exp = expData, annotLevels, "allKImouse",
 #'       savePath=tempdir())
+=======
+#'     generate.celltype.data(exp = expData, annotLevels, "allKImouse")
+>>>>>>> origin/master
 #' @export
 #' @import parallel
 #' @import future

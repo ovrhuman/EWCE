@@ -1,6 +1,7 @@
 Package: EWCE
 Type: Package
 Title: Expression Weighted Celltype Enrichment
+<<<<<<< HEAD
 Version: 0.99.4
 Authors@R:
     c(person(given = "Alan",
@@ -13,6 +14,15 @@ Authors@R:
            role = c("aut"),
            email = "nathan.skene@gmail.com",
            comment = c(ORCID = "0000-0002-6807-3180")))      
+=======
+Version: 0.99.2
+Authors@R:
+    person(given = "Nathan",
+           family = "Skene",
+           role = c("aut","cre"),
+           email = "nathan.skene@gmail.com",
+           comment = c(ORCID = "0000-0002-6807-3180")) 
+>>>>>>> origin/master
 Description: Used to determine which cell types are enriched within gene lists. The package
         provides tools for testing enrichments within simple gene lists (such as human disease
         associated genes) and those resulting from differential expression studies. The package does

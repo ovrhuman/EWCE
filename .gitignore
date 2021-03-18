@@ -12,11 +12,14 @@ Meta
 vignettes/.build.timestamp
 vignettes/EWCE_cache/*
 vignettes/EWCE_files/*
+<<<<<<< HEAD
 EWCE.Rproj
 .DS_Store
 inst/.DS_Store
 vignettes/.DS_Store
 
+=======
+>>>>>>> origin/master
 
 docs
 docs/

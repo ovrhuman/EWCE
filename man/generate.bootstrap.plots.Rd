@@ -95,7 +95,11 @@ full_results <- bootstrap.enrichment.test(
 generate.bootstrap.plots(
     sct_data = ctd, hits = mouse.hits, bg = mouse.bg,
     reps = reps, full_results = full_results, listFileName = "Example",
+<<<<<<< HEAD
     genelistSpecies = "mouse", sctSpecies = "mouse", annotLevel = 1,
     savePath=tempdir()
+=======
+    genelistSpecies = "mouse", sctSpecies = "mouse", annotLevel = 1
+>>>>>>> origin/master
 )
 }

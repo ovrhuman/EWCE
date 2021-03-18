@@ -21,8 +21,12 @@ test_that("Correct mean expression values of CDT calculated", {
     fNames <- EWCE::generate.celltype.data(
         exp = exp_set,
         annotLevels = grouping,
+<<<<<<< HEAD
         groupName = "testthat",
         savePath = tempdir()
+=======
+        groupName = "testthat"
+>>>>>>> origin/master
     )
     # load res - named ctd
     load(fNames)

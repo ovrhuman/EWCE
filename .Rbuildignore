@@ -11,6 +11,9 @@ Readme.md
 Readme.Rmd
 docker_push
 _pkgdown.yml
+<<<<<<< HEAD
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+=======
+>>>>>>> origin/master
