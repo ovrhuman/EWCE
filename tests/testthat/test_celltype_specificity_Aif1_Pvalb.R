@@ -18,11 +18,18 @@ test_that("Cell type specificity Aif1, Pvalb", {
         exp = cortex_mrna$exp, # _scT_normed,
         level2annot = cortex_mrna$annot$level2class
     )
-    annotLevels <- list(level1class = cortex_mrna$annot$level1class, level2class = cortex_mrna$annot$level2class)
-    fNames_CortexOnly <- generate.celltype.data(exp = exp_CortexOnly_DROPPED, annotLevels = annotLevels, groupName = "kiCortexOnly")
+    annotLevels <- 
+        list(level1class = cortex_mrna$annot$level1class, 
+                level2class = cortex_mrna$annot$level2class)
+    fNames_CortexOnly <- 
+        generate.celltype.data(exp = exp_CortexOnly_DROPPED, 
+                                annotLevels = annotLevels, 
+                                groupName = "kiCortexOnly",
+                                savePath = tempdir())
 
     # filter only orthologs
-    fNames_CortexOnly <- filter.genes.without.1to1.homolog(fNames_CortexOnly)
+    fNames_CortexOnly <- filter.genes.without.1to1.homolog(fNames_CortexOnly,
+                                                            savePath=tempdir())
 
     # load and inspect specificity matrix
     load(fNames_CortexOnly[1])
@@ -38,10 +45,11 @@ test_that("Cell type specificity Aif1, Pvalb", {
     ctd_not_norm_spec <- ctd
     fNames_CortexOnly <- generate.celltype.data(
         exp = exp_CortexOnly_DROPPED, annotLevels = annotLevels,
-        groupName = "kiCortexOnly", normSpec = TRUE
+        groupName = "kiCortexOnly", normSpec = TRUE, savePath=tempdir()
     )
     # filter only orthologs
-    fNames_CortexOnly <- filter.genes.without.1to1.homolog(fNames_CortexOnly)
+    fNames_CortexOnly <- filter.genes.without.1to1.homolog(fNames_CortexOnly,
+                                                            savePath=tempdir())
 
     # load and inspect specificity matrix
     load(fNames_CortexOnly[1])

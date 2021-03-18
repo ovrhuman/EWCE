@@ -4,10 +4,12 @@
 \alias{filter.genes.without.1to1.homolog}
 \title{filter.genes.without.1to1.homolog}
 \usage{
-filter.genes.without.1to1.homolog(filenames)
+filter.genes.without.1to1.homolog(filenames, savePath = "~/")
 }
 \arguments{
 \item{filenames}{Array of filenames for sct_data saved as .Rda files}
+
+\item{savePath}{Directory where the CTD file should be saved}
 }
 \value{
 Array of filenames included the ones with only 1:1 homologs
@@ -30,6 +32,8 @@ l2 <- cortex_mrna$annot$level2class
 annotLevels <- list(level1class = l1, level2class = l2)
 fNames_ALLCELLS <- generate.celltype.data(exp = expData, 
     annotLevels = annotLevels, 
-    groupName = "allKImouse")
-fNames_ALLCELLS <- filter.genes.without.1to1.homolog(fNames_ALLCELLS)
+    groupName = "allKImouse",
+    savePath=tempdir())
+fNames_ALLCELLS <- filter.genes.without.1to1.homolog(fNames_ALLCELLS, 
+    savePath=tempdir())
 }

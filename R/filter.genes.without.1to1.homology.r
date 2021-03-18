@@ -7,6 +7,7 @@
 #' tag of the previous file.
 #'
 #' @param filenames Array of filenames for sct_data saved as .Rda files
+#' @param savePath Directory where the CTD file should be saved
 #' @return Array of filenames included the ones with only 1:1 homologs
 #' @examples
 #' library(ewceData)
@@ -19,13 +20,15 @@
 #' annotLevels <- list(level1class = l1, level2class = l2)
 #' fNames_ALLCELLS <- generate.celltype.data(exp = expData, 
 #'     annotLevels = annotLevels, 
-#'     groupName = "allKImouse")
-#' fNames_ALLCELLS <- filter.genes.without.1to1.homolog(fNames_ALLCELLS)
+#'     groupName = "allKImouse",
+#'     savePath=tempdir())
+#' fNames_ALLCELLS <- filter.genes.without.1to1.homolog(fNames_ALLCELLS, 
+#'     savePath=tempdir())
 #' @export
 #' @import utils
 #' @import stringr
 #' @import ewceData
-filter.genes.without.1to1.homolog <- function(filenames) {
+filter.genes.without.1to1.homolog <- function(filenames, savePath="~/") {
     newFilenames <- filenames
     # data("mouse_to_human_homologs")
     mouse_to_human_homologs <- ewceData::mouse_to_human_homologs()
