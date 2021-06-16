@@ -1,9 +1,9 @@
-# base image: rocker/verse (with a specific version of R)
+# rstudio has the latest version of R
 #   has R, RStudio, tidyverse, devtools, tex, and publishing-related packages
-FROM rocker/verse:3.6.0
+FROM rocker/rstudio
 
 # required
-MAINTAINER Nathan Skene <nskene@imperial.ac.uk>
+MAINTAINER Nathan Skene <nskene@imperial.ac.uk>, Alan Murphy <a.murphy@imperial.ac.uk>
 
 # copy the repo contents into the docker image at `/ewce`
 COPY . /ewce
