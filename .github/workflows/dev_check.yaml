@@ -46,6 +46,8 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}  
+      - name: Checkout staging branch with Dockerfile
+        uses: actions/checkout@v2
       - name: push to docker
         uses: docker/build-push-action@v1
         with:
