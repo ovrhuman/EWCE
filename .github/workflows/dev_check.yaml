@@ -19,7 +19,7 @@ jobs:
           dir.create(".github")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
-        
+
       - name: Cache R packages
         if: runner.os != 'Windows'
         uses: actions/cache@v1
@@ -50,7 +50,7 @@ jobs:
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning", check_dir = "check")
-        shell: Rscript {0}
+        shell: Rscript {0}  
 
       - name: push to docker
       - uses: docker/build-push-action@v1
@@ -65,6 +65,7 @@ jobs:
       - name: Build pkgdown
         run: |
            PATH=$PATH:$HOME/bin/ Rscript -e 'BiocManager::install(c("knitr", "rmarkdown", "pkgdown")); pkgdown::build_site(".")'
+  
       # deploy needs rsync? Seems so.
       - name: Install deploy dependencies
         run: |
@@ -77,4 +78,3 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: docs # The folder the action should deploy.
               
-
