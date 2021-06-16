@@ -13,6 +13,9 @@ RUN apt-get update &&\
     libxml2-dev libcurl4-openssl-dev libssl-dev\
     libssh2-1-dev
 
+RUN install2.r -e \
+devtools
+
 # install the dependencies of the R package located at `/ewce`
 RUN R -e "devtools::install_dev_deps('/ewce', dep = TRUE, quiet=TRUE)"
 
