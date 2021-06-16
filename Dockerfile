@@ -13,11 +13,19 @@ RUN apt-get update &&\
     libxml2-dev libcurl4-openssl-dev libssl-dev\
     libssh2-1-dev
 
+# install R package binaries for dependencies
 RUN install2.r -e \
+ggplot2 \
+stringr \
+cowplot \
+ggdendro \
+future \
+knitr \
+rmarkdown \
+testthat \
+data.table \
 devtools
 
-# install the dependencies of the R package located at `/ewce`
-RUN R -e "devtools::install_dev_deps('/ewce', dep = TRUE, quiet=TRUE)"
 
-# install the package
+# install the package with remaining dependencies installing too
 RUN R -e "devtools::install_github('nathanskene/ewce',quiet=TRUE)"
