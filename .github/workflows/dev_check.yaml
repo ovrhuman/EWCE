@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: bioconductor/bioconductor_docker:devel
+    container: bioconductor/bioconductor_docker:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
