@@ -1,8 +1,10 @@
 on:
   push:
-    branches: [master, staging]
+    branches: 
+      - master
+      - staging
   pull_request:
-    branches: [master]
+    branches: master
 jobs:
   build:
     runs-on: ubuntu-latest
